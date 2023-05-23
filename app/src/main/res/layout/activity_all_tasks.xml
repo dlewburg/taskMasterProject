@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".AllTasksActivity">
 
+    <androidx.constraintlayout.utils.widget.MockView
+        android:id="@+id/allTaskActivityMockView"
+        android:layout_width="350dp"
+        android:layout_height="451dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/allTaskActivityTitleAllTaskTextView"
+        android:layout_width="196dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/all_tasks_page_title"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

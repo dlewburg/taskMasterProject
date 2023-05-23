@@ -11,4 +11,5 @@
     <string name="total_task">Total Task:</string>
     <string name="add_task_description">ADD TASK</string>
     <string name="add_task_submitted">SUBMITTED</string>
+    <string name="all_tasks_page_title">All Tasks</string>
 </resources>
