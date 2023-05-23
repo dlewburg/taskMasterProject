@@ -16,19 +16,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button addTaskButton = findViewById(R.id.mainActivityAddTaskButton);
-//        addTaskButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-////               TextView myTasksTextView = (TextView) findViewById(R.id.mainActivityMyTasksTextView);
-//            }
-//        });
+        Button allTaskButton = findViewById(R.id.allTaskActivityAllTaskButton);
 
         addTaskButton.setOnClickListener(v -> {
-            Intent goToOrderFormIntent = new Intent(MainActivity.this, AddTaskActivity.class);
+            Intent goToAddTaskIntent = new Intent(MainActivity.this, AddTaskActivity.class);
             //Start Intent
-            startActivity(goToOrderFormIntent);
+            startActivity(goToAddTaskIntent);
         });
+
+
     }
 
 }
