@@ -3,4 +3,11 @@
     <string name="my_tasks">My Tasks</string>
     <string name="add_task">ADD TASK</string>
     <string name="all_tasks">ALL TASKS</string>
+    <string name="do_something">Do Something</string>
+    <string name="task_description">Task Description</string>
+    <string name="add_task_to_list">Add Task</string>
+    <string name="task_title">Task Title</string>
+    <string name="my_task">My Task</string>
+    <string name="total_task">Total Task:</string>
+    <string name="add_task_description">ADD TASK</string>
 </resources>

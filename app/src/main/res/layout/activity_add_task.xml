@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTaskActivity">
+
+    <EditText
+        android:id="@+id/addTaskActivityTaskDescriptionEditText"
+        android:layout_width="338dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/do_something"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/addTaskActivityTaskTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/addTaskActivityAddTaskDescriptionTextView"
+        app:layout_constraintVertical_bias="0.0"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/addTaskActivityAddTaskDescriptionTextView"
+        android:layout_width="338dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/task_description"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/addTaskActivityAddTaskTextView"
+        app:layout_constraintTop_toBottomOf="@id/addTaskActivityTaskTitleEditText" />
+
+    <TextView
+        android:id="@+id/addTaskActivityAddTaskTextView"
+        android:layout_width="196dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/add_task_to_list"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/addTaskActivityTaskTitleTextView"
+        android:layout_width="338dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/task_title"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/addTaskActivityAddTaskTextView"
+        app:layout_constraintTop_toBottomOf="@id/addTaskActivityAddTaskTextView" />
+
+    <EditText
+        android:id="@+id/addTaskActivityTaskTitleEditText"
+        android:layout_width="338dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/my_task"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/addTaskActivityTaskTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskActivityTaskTitleTextView"
+        app:layout_constraintVertical_bias="0.0"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/addTaskActivityTotalTaskTextView"
+        android:layout_width="93dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="196dp"
+        android:text="@string/total_task"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addTaskActivityAddTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginBottom="64dp"
+        android:text="@string/add_task_description"
+        app:layout_constraintBottom_toTopOf="@+id/addTaskActivityTotalTaskTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_constraintTop_toBottomOf="@id/addTaskActivityTaskDescriptionEditText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
