@@ -23,4 +23,5 @@
     <string name="walk_the_dog">Walk the Dog</string>
     <string name="finish_homework">Finish Homework</string>
     <string name="no_task_name">No Task</string>
+    <string name="task_status">Task Status</string>
 </resources>
