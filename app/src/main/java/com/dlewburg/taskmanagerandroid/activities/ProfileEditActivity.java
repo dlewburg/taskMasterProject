@@ -23,6 +23,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        showSharedPreferencesData(preferences);
         saveButtonFunction(preferences);
     }
 
@@ -39,5 +40,10 @@ public class ProfileEditActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Username Saved!", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    public void showSharedPreferencesData(SharedPreferences preferences){
+        String usernameData = preferences.getString(PROFILE_USERNAME_TAG, "");
+        ((EditText) findViewById(R.id.profileEditActivityUserEditText)).setText(usernameData);
     }
 }

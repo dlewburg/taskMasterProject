@@ -8,17 +8,14 @@
 
     <TextView
         android:id="@+id/mainActivityMyTasksTextView"
-        android:layout_width="196dp"
+        android:layout_width="wrap_content"
         android:layout_height="56dp"
+        android:layout_marginStart="54dp"
         android:layout_marginTop="48dp"
         android:text="@string/my_tasks"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
-        app:layout_constraintStart_toStartOf="@id/mainActivityMockViewHomepage"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034"
         tools:ignore="TextSizeCheck" />
 
     <Button
@@ -28,30 +25,18 @@
         android:layout_marginBottom="96dp"
         android:text="@string/add_task"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="@id/mainActivityMockViewHomepage"
-        tools:layout_constraintStart_toStartOf="@id/mainActivityMockViewHomepage" />
+        app:layout_constraintLeft_toLeftOf="@id/mainActivityMyTasksTextView"
+        />
 
     <Button
         android:id="@+id/mainActivityAllTasksButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
         android:layout_marginBottom="96dp"
         android:text="@string/all_tasks"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/mainActivityMockViewHomepage" />
-
-    <androidx.constraintlayout.utils.widget.MockView
-        android:id="@+id/mainActivityMockViewHomepage"
-        android:layout_width="319dp"
-        android:layout_height="361dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/mainActivityAddTaskButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainActivityMyTasksTextView"
-        app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible" />
+        app:layout_constraintStart_toEndOf="@+id/mainActivityAddTaskButton" />
 
     <ImageView
         android:id="@+id/mainActivityProfileEditButton"
@@ -64,5 +49,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <Button
+        android:id="@+id/mainActivityFirstTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:text="@string/interview_for_swe_position"
+        app:layout_constraintBottom_toTopOf="@+id/mainActivitySecondTaskButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainActivityMyTasksTextView" />
+
+    <Button
+        android:id="@+id/mainActivitySecondTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:text="@string/walk_the_dog"
+        app:layout_constraintBottom_toTopOf="@+id/mainActivityThirdTaskButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainActivityFirstTaskButton" />
+
+    <Button
+        android:id="@+id/mainActivityThirdTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:text="@string/finish_homework"
+        app:layout_constraintBottom_toTopOf="@+id/mainActivityAddTaskButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainActivitySecondTaskButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
