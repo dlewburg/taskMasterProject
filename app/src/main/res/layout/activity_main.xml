@@ -53,4 +53,16 @@
         app:layout_constraintVertical_bias="0.0"
         tools:visibility="visible" />
 
+    <ImageView
+        android:id="@+id/mainActivityProfileEditButton"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="#840E98"
+        android:contentDescription="@string/profileEditButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

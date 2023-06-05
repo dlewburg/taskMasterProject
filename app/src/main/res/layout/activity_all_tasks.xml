@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllTasksActivity">
+    tools:context=".activities.AllTasksActivity">
 
     <androidx.constraintlayout.utils.widget.MockView
         android:id="@+id/allTaskActivityMockView"
@@ -21,7 +21,7 @@
         android:id="@+id/allTaskActivityTitleAllTaskTextView"
         android:layout_width="196dp"
         android:layout_height="56dp"
-        android:layout_marginStart="53dp"
+        android:layout_marginStart="54dp"
         android:layout_marginTop="48dp"
         android:text="@string/all_tasks_page_title"
         android:textSize="40sp"

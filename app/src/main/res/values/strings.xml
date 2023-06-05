@@ -12,4 +12,11 @@
     <string name="add_task_description">ADD TASK</string>
     <string name="add_task_submitted">SUBMITTED</string>
     <string name="all_tasks_page_title">All Tasks</string>
+    <string name="profileEditButton">profieEditButton</string>
+    <string name="task_details_activity_title">Task Details</string>
+    <string name="task_details_activity_details_text_multiline" />
+    <string name="task_details_activity_multiline_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus imperdiet nulla malesuada pellentesque elit eget. Nulla facilisi nullam vehicula ipsum a. Orci a scelerisque purus semper eget duis at tellus at. Pharetra diam sit amet nisl suscipit adipiscing bibendum.</string>
+    <string name="user_name">User Name</string>
+    <string name="user_nickname">User Nickname</string>
+    <string name="save">Save</string>
 </resources>

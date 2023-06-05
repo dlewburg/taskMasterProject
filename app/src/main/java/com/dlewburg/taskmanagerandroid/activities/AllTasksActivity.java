@@ -1,8 +1,10 @@
-package com.dlewburg.taskmanagerandroid;
+package com.dlewburg.taskmanagerandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.dlewburg.taskmanagerandroid.R;
 
 public class AllTasksActivity extends AppCompatActivity {
 
