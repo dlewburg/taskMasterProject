@@ -16,6 +16,7 @@ import com.dlewburg.taskmanagerandroid.activities.AddTaskActivity;
 import com.dlewburg.taskmanagerandroid.activities.AllTasksActivity;
 import com.dlewburg.taskmanagerandroid.activities.ProfileEditActivity;
 import com.dlewburg.taskmanagerandroid.activities.TaskDetailsActivity;
+import com.dlewburg.taskmanagerandroid.adapters.TaskListRecyclerViewAdapter;
 import com.dlewburg.taskmanagerandroid.models.Task;
 
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_DETAILS_TITLE_TAG = "taskTitle";
     public static final String TASK_STATUS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_TAG= "taskDescription";
+
+    TaskListRecyclerViewAdapter adapter;
     SharedPreferences preferences;
 
     @Override
@@ -37,16 +40,9 @@ public class MainActivity extends AppCompatActivity {
         taskList.add(new Task("Walk the dog", "Pick up Golum and walk him 10K steps", Task.TaskStatus.COMPLETE));
         taskList.add(new Task("Finish Homework", "Complete labs, code challenges, and readings", Task.TaskStatus.IN_PROGRESS));
 
-//        RecyclerView taskRecyclerView = findViewById(R.id.mainActivityTaskRecyclerView);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-//        taskRecyclerView.setLayoutManager(layoutManager);
-//
-//        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter();
-//        taskRecyclerView.setAdapter(adapter);
-
-
 
         profileEditButtonFunction();
+        setUpRecyclerView(taskList);
         firstTaskButtonFunction();
         secondTaskButtonFunction();
         thirdTaskButtonFunction();
@@ -130,13 +126,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setUpRecyclerView(List<Task> createdTasks) {
+    public void setUpRecyclerView(List<Task> taskList) {
         RecyclerView taskListRecyclerView = findViewById(R.id.mainActivityTaskRecyclerView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         taskListRecyclerView.setLayoutManager(layoutManager);
 
-        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
+         adapter = new TaskListRecyclerViewAdapter(taskList, this);
         taskListRecyclerView.setAdapter(adapter);
     }
 

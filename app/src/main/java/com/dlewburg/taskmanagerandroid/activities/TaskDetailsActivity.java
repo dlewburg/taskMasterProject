@@ -26,14 +26,6 @@ public class TaskDetailsActivity extends AppCompatActivity {
         taskDetailsTaskTitle();
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        String taskDetailsTitle = preferences.getString(MainActivity.TASK_DETAILS_TITLE_TAG, "");
-//        ((TextView) findViewById(R.id.mainActivityMyTasksTextView)).setText(taskDetailsTitle);
-//    }
     public void taskDetailsTaskTitle(){
         Intent callingIntent = getIntent();
         String taskNameString = null;

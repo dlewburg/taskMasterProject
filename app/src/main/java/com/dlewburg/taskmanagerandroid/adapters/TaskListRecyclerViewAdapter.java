@@ -39,12 +39,17 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
     @Override
     public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
-        Button taskFragmentButton = (Button) holder.itemView.findViewById(R.id.button_task_list_fragment_task_list_item);
+        Button taskFragmentButton = (Button) holder.itemView.findViewById(R.id.fragmentTaskListButton);
         Task task = tasks.get(position);
         String taskName = task.getTitle();
         taskFragmentButton.setText(taskName);
 
         setupTaskButton(taskFragmentButton, task);
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
     }
 
     public void setupTaskButton(Button goToTaskButton, Task task) {
@@ -63,10 +68,6 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
         });
     }
 
-    @Override
-    public int getTaskCount() {
-        return tasks.size();
-    }
 
     public static class TaskListViewHolder extends RecyclerView.ViewHolder {
         public TaskListViewHolder(View fragmentItemView) {
