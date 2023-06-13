@@ -17,3 +17,5 @@ An Android App Production
 ### Change Log
 
 Created a Task Details Page and utilized Intent and Shared Preferences to share data across Activities.
+
+Completed adding the recyclerView on the Main Activity but it does not show on the Main page. No errors 
