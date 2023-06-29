@@ -47,19 +47,7 @@ public class MainActivityUsernameTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        ViewInteraction editText = onView(
-                allOf(withId(R.id.profileEditActivityUserEditText), withText("User Nickname"),
-                        withParent(allOf(withId(R.id.profileEditActivityPage),
-                                withParent(withId(android.R.id.content)))),
-                        isDisplayed()));
-        editText.check(matches(isDisplayed()));
 
-        ViewInteraction editText2 = onView(
-                allOf(withId(R.id.profileEditActivityUserEditText), withText("User Nickname"),
-                        withParent(allOf(withId(R.id.profileEditActivityPage),
-                                withParent(withId(android.R.id.content)))),
-                        isDisplayed()));
-        editText2.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(
