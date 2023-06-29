@@ -49,7 +49,7 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
     @Override
     public int getItemCount() {
-        return 0;
+        return tasks.size();
     }
 
     public void setupTaskButton(Button goToTaskButton, Task task) {

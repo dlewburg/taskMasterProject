@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         profileEditButtonFunction();
         setUpRecyclerView(taskList);
-        firstTaskButtonFunction();
-        secondTaskButtonFunction();
-        thirdTaskButtonFunction();
+//        firstTaskButtonFunction();
+//        secondTaskButtonFunction();
+//        thirdTaskButtonFunction();
         addTaskButtonFunction();
         allTaskButtonFunction();
 
@@ -93,38 +93,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void firstTaskButtonFunction() {
-        Button firstTaskButton = findViewById(R.id.mainActivityFirstTaskButton);
-        firstTaskButton.setOnClickListener(v -> {
-            Intent goToFirstTaskDetailsActivity = new Intent(MainActivity.this, TaskDetailsActivity.class);
-            String taskTitle = firstTaskButton.getText().toString();
-            goToFirstTaskDetailsActivity.putExtra(TASK_DETAILS_TITLE_TAG, taskTitle);
-
-            startActivity(goToFirstTaskDetailsActivity);
-        });
-    }
-
-    public void secondTaskButtonFunction() {
-        Button secondTaskButton = findViewById(R.id.mainActivitySecondTaskButton);
-        secondTaskButton.setOnClickListener(v -> {
-            Intent goToSecondTaskDetailsActivity = new Intent(MainActivity.this, TaskDetailsActivity.class);
-            String taskTitle = secondTaskButton.getText().toString();
-            goToSecondTaskDetailsActivity.putExtra(TASK_DETAILS_TITLE_TAG, taskTitle);
-
-            startActivity(goToSecondTaskDetailsActivity);
-        });
-    }
-
-    public void thirdTaskButtonFunction() {
-        Button thirdTaskButton = findViewById(R.id.mainActivityThirdTaskButton);
-        thirdTaskButton.setOnClickListener(v -> {
-            Intent goToThirdTaskDetailsActivity = new Intent(MainActivity.this, TaskDetailsActivity.class);
-            String taskTitle = thirdTaskButton.getText().toString();
-            goToThirdTaskDetailsActivity.putExtra(TASK_DETAILS_TITLE_TAG, taskTitle);
-
-            startActivity(goToThirdTaskDetailsActivity);
-        });
-    }
+//    public void firstTaskButtonFunction() {
+//        Button firstTaskButton = findViewById(R.id.mainActivityFirstTaskButton);
+//        firstTaskButton.setOnClickListener(v -> {
+//            Intent goToFirstTaskDetailsActivity = new Intent(MainActivity.this, TaskDetailsActivity.class);
+//            String taskTitle = firstTaskButton.getText().toString();
+//            goToFirstTaskDetailsActivity.putExtra(TASK_DETAILS_TITLE_TAG, taskTitle);
+//
+//            startActivity(goToFirstTaskDetailsActivity);
+//        });
+//    }
+//
+//    public void secondTaskButtonFunction() {
+//        Button secondTaskButton = findViewById(R.id.mainActivitySecondTaskButton);
+//        secondTaskButton.setOnClickListener(v -> {
+//            Intent goToSecondTaskDetailsActivity = new Intent(MainActivity.this, TaskDetailsActivity.class);
+//            String taskTitle = secondTaskButton.getText().toString();
+//            goToSecondTaskDetailsActivity.putExtra(TASK_DETAILS_TITLE_TAG, taskTitle);
+//
+//            startActivity(goToSecondTaskDetailsActivity);
+//        });
+//    }
+//
+//    public void thirdTaskButtonFunction() {
+//        Button thirdTaskButton = findViewById(R.id.mainActivityThirdTaskButton);
+//        thirdTaskButton.setOnClickListener(v -> {
+//            Intent goToThirdTaskDetailsActivity = new Intent(MainActivity.this, TaskDetailsActivity.class);
+//            String taskTitle = thirdTaskButton.getText().toString();
+//            goToThirdTaskDetailsActivity.putExtra(TASK_DETAILS_TITLE_TAG, taskTitle);
+//
+//            startActivity(goToThirdTaskDetailsActivity);
+//        });
+//    }
 
     public void setUpRecyclerView(List<Task> taskList) {
         RecyclerView taskListRecyclerView = findViewById(R.id.mainActivityTaskRecyclerView);
