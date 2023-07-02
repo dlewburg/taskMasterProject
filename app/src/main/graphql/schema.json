@@ -134,7 +134,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "Todo",
+                "name": "Task",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": [
@@ -155,7 +155,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "args": [],
                         "type": {
@@ -171,12 +171,24 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "TaskStatus",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -243,91 +255,39 @@
                 "possibleTypes": null
             },
             {
-                "kind": "OBJECT",
-                "name": "Task",
+                "kind": "ENUM",
+                "name": "TaskStatus",
                 "description": null,
                 "specifiedByUrl": null,
-                "fields": [
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
                     {
-                        "name": "id",
+                        "name": "NEW",
                         "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            }
-                        },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "name",
+                        "name": "ASSIGNED",
                         "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "status",
+                        "name": "IN_PROGRESS",
                         "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "createdAt",
+                        "name": "COMPLETE",
                         "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "AWSDateTime",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "updatedAt",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "AWSDateTime",
-                                "ofType": null
-                            }
-                        },
                         "isDeprecated": false,
                         "deprecationReason": null
                     }
                 ],
-                "inputFields": null,
-                "interfaces": [],
-                "enumValues": null,
                 "possibleTypes": null
             },
             {
@@ -1849,7 +1809,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "ModelTodoConnection",
+                "name": "ModelTaskConnection",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": [
@@ -1865,7 +1825,7 @@
                                 "name": null,
                                 "ofType": {
                                     "kind": "OBJECT",
-                                    "name": "Todo",
+                                    "name": "Task",
                                     "ofType": null
                                 }
                             }
@@ -1893,7 +1853,43 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelTodoFilterInput",
+                "name": "ModelTaskStatusInput",
+                "description": null,
+                "specifiedByUrl": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "TaskStatus",
+                            "ofType": null
+                        },
+                        "defaultValue": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "TaskStatus",
+                            "ofType": null
+                        },
+                        "defaultValue": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelTaskFilterInput",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -1911,7 +1907,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1923,11 +1919,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelTaskStatusInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -1942,7 +1950,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoFilterInput",
+                                "name": "ModelTaskFilterInput",
                                 "ofType": null
                             }
                         },
@@ -1958,7 +1966,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoFilterInput",
+                                "name": "ModelTaskFilterInput",
                                 "ofType": null
                             }
                         },
@@ -1971,7 +1979,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelTodoFilterInput",
+                            "name": "ModelTaskFilterInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -1989,84 +1997,6 @@
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": [
-                    {
-                        "name": "getTodo",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "id",
-                                "description": null,
-                                "type": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "SCALAR",
-                                        "name": "ID",
-                                        "ofType": null
-                                    }
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "Todo",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "listTodos",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "filter",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoFilterInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "limit",
-                                "description": null,
-                                "type": {
-                                    "kind": "SCALAR",
-                                    "name": "Int",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "nextToken",
-                                "description": null,
-                                "type": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "ModelTodoConnection",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
                     {
                         "name": "getTask",
                         "description": null,
@@ -2153,13 +2083,13 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelTodoConditionInput",
+                "name": "ModelTaskConditionInput",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2171,11 +2101,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelTaskStatusInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -2190,7 +2132,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoConditionInput",
+                                "name": "ModelTaskConditionInput",
                                 "ofType": null
                             }
                         },
@@ -2206,7 +2148,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoConditionInput",
+                                "name": "ModelTaskConditionInput",
                                 "ofType": null
                             }
                         },
@@ -2219,7 +2161,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelTodoConditionInput",
+                            "name": "ModelTaskConditionInput",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -2233,7 +2175,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateTodoInput",
+                "name": "CreateTaskInput",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2251,7 +2193,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2267,11 +2209,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "TaskStatus",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -2285,7 +2239,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateTodoInput",
+                "name": "UpdateTaskInput",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2307,7 +2261,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -2319,11 +2273,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "TaskStatus",
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -2337,7 +2303,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteTodoInput",
+                "name": "DeleteTaskInput",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2369,129 +2335,6 @@
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": [
-                    {
-                        "name": "createTodo",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "input",
-                                "description": null,
-                                "type": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "INPUT_OBJECT",
-                                        "name": "CreateTodoInput",
-                                        "ofType": null
-                                    }
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "condition",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "Todo",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "updateTodo",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "input",
-                                "description": null,
-                                "type": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "INPUT_OBJECT",
-                                        "name": "UpdateTodoInput",
-                                        "ofType": null
-                                    }
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "condition",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "Todo",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "deleteTodo",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "input",
-                                "description": null,
-                                "type": {
-                                    "kind": "NON_NULL",
-                                    "name": null,
-                                    "ofType": {
-                                        "kind": "INPUT_OBJECT",
-                                        "name": "DeleteTodoInput",
-                                        "ofType": null
-                                    }
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            },
-                            {
-                                "name": "condition",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "Todo",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
                     {
                         "name": "createTask",
                         "description": null,
@@ -2623,7 +2466,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelSubscriptionTodoFilterInput",
+                "name": "ModelSubscriptionTaskFilterInput",
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2641,7 +2484,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2653,7 +2496,19 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelSubscriptionStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2672,7 +2527,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelSubscriptionTodoFilterInput",
+                                "name": "ModelSubscriptionTaskFilterInput",
                                 "ofType": null
                             }
                         },
@@ -2688,7 +2543,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelSubscriptionTodoFilterInput",
+                                "name": "ModelSubscriptionTaskFilterInput",
                                 "ofType": null
                             }
                         },
@@ -2707,81 +2562,6 @@
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": [
-                    {
-                        "name": "onCreateTodo",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "filter",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelSubscriptionTodoFilterInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "Todo",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "onUpdateTodo",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "filter",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelSubscriptionTodoFilterInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "Todo",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "onDeleteTodo",
-                        "description": null,
-                        "args": [
-                            {
-                                "name": "filter",
-                                "description": null,
-                                "type": {
-                                    "kind": "INPUT_OBJECT",
-                                    "name": "ModelSubscriptionTodoFilterInput",
-                                    "ofType": null
-                                },
-                                "defaultValue": null,
-                                "isDeprecated": false,
-                                "deprecationReason": null
-                            }
-                        ],
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "Todo",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
                     {
                         "name": "onCreateTask",
                         "description": null,
@@ -2860,434 +2640,6 @@
                 ],
                 "inputFields": null,
                 "interfaces": [],
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "OBJECT",
-                "name": "ModelTaskConnection",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": [
-                    {
-                        "name": "items",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "OBJECT",
-                                    "name": "Task",
-                                    "ofType": null
-                                }
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "nextToken",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "inputFields": null,
-                "interfaces": [],
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ModelTaskFilterInput",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIDInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "name",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "status",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "and",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ModelTaskFilterInput",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "or",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ModelTaskFilterInput",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "not",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelTaskFilterInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ModelTaskConditionInput",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "name",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "status",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "and",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ModelTaskConditionInput",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "or",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ModelTaskConditionInput",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "not",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelTaskConditionInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "CreateTaskInput",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "ID",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "name",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "status",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "UpdateTaskInput",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "name",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "status",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "DeleteTaskInput",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "ModelSubscriptionTaskFilterInput",
-                "description": null,
-                "specifiedByUrl": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "id",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelSubscriptionIDInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "name",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelSubscriptionStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "status",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelSubscriptionStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "and",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ModelSubscriptionTaskFilterInput",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "or",
-                        "description": null,
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "ModelSubscriptionTaskFilterInput",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null
             },
