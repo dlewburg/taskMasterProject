@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "taskmasterproject",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "AWS_IAM"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 45,
+        "apiKeyExpirationDate": "2023-08-16T01:42:10.643Z",
+        "keyDescription": ""
+      }
+    ]
+  }
+}
