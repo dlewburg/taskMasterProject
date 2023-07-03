@@ -24,7 +24,7 @@ import java.util.concurrent.CompletableFuture;
 public class ProfileEditActivity extends AppCompatActivity {
     public static final String PROFILE_USERNAME_TAG = "username";
     public static final String TEAM_TAG = "team";
-    public static final String TEAM_TAG = "team";
+//    public static final String TEAM_TAG = "team";
     public static final String TAG = "settings_activity";
     Spinner taskTeamSpinner = null;
     SharedPreferences preferences;
