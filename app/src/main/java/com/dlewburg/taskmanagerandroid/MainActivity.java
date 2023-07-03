@@ -8,37 +8,44 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
 import com.dlewburg.taskmanagerandroid.activities.AddTaskActivity;
 import com.dlewburg.taskmanagerandroid.activities.AllTasksActivity;
 import com.dlewburg.taskmanagerandroid.activities.ProfileEditActivity;
 import com.dlewburg.taskmanagerandroid.activities.TaskDetailsActivity;
 import com.dlewburg.taskmanagerandroid.adapters.TaskListRecyclerViewAdapter;
-import com.dlewburg.taskmanagerandroid.models.Task;
+//import com.dlewburg.taskmanagerandroid.models.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String TAG = "main_activity_tag";
     public static final String TASK_DETAILS_TITLE_TAG = "taskTitle";
     public static final String TASK_STATUS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_TAG= "taskDescription";
 
     TaskListRecyclerViewAdapter adapter;
     SharedPreferences preferences;
+    List<Task> taskList = new ArrayList<>();
+    TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Task> taskList = new ArrayList<>();
-        taskList.add(new Task("Interview for SWE Role", "Review DSA & How to WB", Task.TaskStatus.NEW));
-        taskList.add(new Task("Walk the dog", "Pick up Golum and walk him 10K steps", Task.TaskStatus.COMPLETE));
-        taskList.add(new Task("Finish Homework", "Complete labs, code challenges, and readings", Task.TaskStatus.IN_PROGRESS));
+//        taskList.add(new Task("Interview for SWE Role", "Review DSA & How to WB", Task.TaskStatus.NEW));
+//        taskList.add(new Task("Walk the dog", "Pick up Golum and walk him 10K steps", Task.TaskStatus.COMPLETE));
+//        taskList.add(new Task("Finish Homework", "Complete labs, code challenges, and readings", Task.TaskStatus.IN_PROGRESS));
 
 
         profileEditButtonFunction();
@@ -54,10 +61,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        taskList.clear();
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userProfileName = preferences.getString(ProfileEditActivity.PROFILE_USERNAME_TAG, "");
         ((TextView) findViewById(R.id.mainActivityMyTasksTextView)).setText(userProfileName + "'s Tasks");
+
+        readTasksFromDatabase();
+        taskListRecyclerViewAdapter.updateTasksData(taskList);
+
+
     }
 
     public void profileEditButtonFunction() {
@@ -67,6 +80,26 @@ public class MainActivity extends AppCompatActivity {
             Intent goToProfileEditIntent = new Intent(MainActivity.this, ProfileEditActivity.class);
             startActivity(goToProfileEditIntent);
         });
+    }
+
+    public void readTasksFromDatabase() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String current = preferences.getString(ProfileEditActivity.TEAM_TAG, "All");
+
+        Amplify.API.query(
+            ModelQuery.list(Task.class),
+            success -> {
+                Log.i(TAG, "Read Tasks from Database successfully");
+                for (Task task : success.getData()) {
+                    if (current.equals("All") || task.getTeam().getName().equals(current)) {
+                        taskList.add(task);
+                    }
+                }
+                runOnUiThread(() -> taskListRecyclerViewAdapter.notifyDataSetChanged());
+            },
+            failure -> Log.i(TAG, "Failed to read Tasks from Databaase")
+        );
+
     }
 
     public void addTaskButtonFunction() {
@@ -132,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         taskListRecyclerView.setLayoutManager(layoutManager);
 
-         adapter = new TaskListRecyclerViewAdapter(taskList, this);
+        adapter = new TaskListRecyclerViewAdapter(taskList, this);
         taskListRecyclerView.setAdapter(adapter);
     }
 

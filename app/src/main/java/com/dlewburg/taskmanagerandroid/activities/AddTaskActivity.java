@@ -47,7 +47,7 @@ public class AddTaskActivity extends AppCompatActivity {
         Amplify.API.mutate(
             ModelMutation.create(newTask),
             successResponse -> Log.i(TAG, "AddTaskActivity.onCreate() : added a task"),
-            failureResponse -> Log.i(TAG, "AddTaskActivity.onCreate() : adding task failed")
+            failureResponse -> Log.i(TAG, "AddTaskActivity.onCreate() : adding task failed" + failureResponse)
         );
 
 

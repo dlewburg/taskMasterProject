@@ -14,9 +14,10 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Task;
 import com.dlewburg.taskmanagerandroid.R;
 import com.dlewburg.taskmanagerandroid.activities.TaskDetailsActivity;
-import com.dlewburg.taskmanagerandroid.models.Task;
+
 
 import java.util.List;
 

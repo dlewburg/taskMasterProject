@@ -13,6 +13,7 @@ import com.dlewburg.taskmanagerandroid.R;
 
 public class ProfileEditActivity extends AppCompatActivity {
     public static final String PROFILE_USERNAME_TAG = "username";
+    public static final String TEAM_TAG = "team";
 
     SharedPreferences preferences;
 
