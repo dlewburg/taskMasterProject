@@ -114,4 +114,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTaskActivityAddTaskButton" />
 
+    <Spinner
+        android:id="@+id/addTaskActivitySpinnerTaskStatus"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/task_status"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskActivityTotalTaskTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
