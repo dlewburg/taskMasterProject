@@ -77,6 +77,7 @@ public class AddTaskActivity extends AppCompatActivity {
             .title(getTitle().toString())
 //            .body(get.toString())
             .status(newStatus)
+            .team(team)
             .build();
 
         Amplify.API.mutate(
@@ -101,6 +102,7 @@ public class AddTaskActivity extends AppCompatActivity {
 //                Intent goToAllTaskActivity = new Intent(AddTaskActivity.this, AllTasksActivity.class);
 //
 //                startActivity(goToAllTaskActivity);
+
             }
 
         });
