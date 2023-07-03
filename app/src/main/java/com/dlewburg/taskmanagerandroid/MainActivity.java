@@ -13,9 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
+import com.amplifyframework.datastore.generated.model.Team;
 import com.dlewburg.taskmanagerandroid.activities.AddTaskActivity;
 import com.dlewburg.taskmanagerandroid.activities.AllTasksActivity;
 import com.dlewburg.taskmanagerandroid.activities.ProfileEditActivity;
@@ -62,6 +64,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         taskList.clear();
+
+        Team team1 = Team.builder()
+            .name("First Team")
+            .build();
+        Amplify.API.mutate(
+            ModelMutation.create(team1),
+            success -> Log.i(TAG, "Team Added Successfully"),
+            failure -> Log.i(TAG, "Failed to Add Team")
+        );
+
+        Team team2 = Team.builder()
+            .name("Second Team")
+            .build();
+        Amplify.API.mutate(
+            ModelMutation.create(team2),
+            success -> Log.i(TAG, "Teams Added Successfully"),
+            failure -> Log.i(TAG, "Failed to Add Team")
+        );
+
+        Team team3 = Team.builder()
+            .name("Second Team")
+            .build();
+        Amplify.API.mutate(
+            ModelMutation.create(team3),
+            success -> Log.i(TAG, "Teams Added Successfully"),
+            failure -> Log.i(TAG, "Failed to Add Team")
+        );
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userProfileName = preferences.getString(ProfileEditActivity.PROFILE_USERNAME_TAG, "");

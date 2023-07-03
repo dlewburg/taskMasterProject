@@ -128,4 +128,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTaskActivityTotalTaskTextView" />
 
+    <Spinner
+        android:id="@+id/addTaskActivityTeamSpinner"
+        android:layout_width="146dp"
+        android:layout_height="47dp"
+        tools:layout_editor_absoluteX="226dp"
+        tools:layout_editor_absoluteY="404dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
