@@ -23,6 +23,7 @@ import com.dlewburg.taskmanagerandroid.utils.TaskStatusUtility;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 public class AddTaskActivity extends AppCompatActivity {
     public static final String TAG = "add_task_tag";
@@ -54,9 +55,13 @@ public class AddTaskActivity extends AppCompatActivity {
                     ));
                 });
             },
-            failure -> Log.i(TAG, "Failed to read Teams")
+            failure -> Log.i(TAG, "Failed to Read Team")
         );
 
+        String teamString = taskTeamSpinner.getSelectedItem().toString();
+        Team team = teamList.stream().filter(e -> e.getName().equals(teamString)).collect(Collectors.toList()).get(0);
+
+        taskTeamSpinner.setSelection(0);
 
         List<String> statusList = TaskStatusUtility.getTaskStatusList();
 
