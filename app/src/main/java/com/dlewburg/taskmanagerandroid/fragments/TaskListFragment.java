@@ -17,11 +17,11 @@ public class TaskListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static TaskListFragment newInstance(String param1, String param2) {
-        TaskListFragment fragment = new TaskListFragment();
-
-        return fragment;
-    }
+//    public static TaskListFragment newInstance(String param1, String param2) {
+//        TaskListFragment fragment = new TaskListFragment();
+//
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

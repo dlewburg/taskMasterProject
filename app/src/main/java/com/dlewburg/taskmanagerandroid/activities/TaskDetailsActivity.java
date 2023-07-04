@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+//import android.preference.PreferenceManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dlewburg.taskmanagerandroid.MainActivity;
 import com.dlewburg.taskmanagerandroid.R;
 
-import org.w3c.dom.Text;
+//import org.w3c.dom.Text;
 
 public class TaskDetailsActivity extends AppCompatActivity {
 
-    SharedPreferences preferences;
+//    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
