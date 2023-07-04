@@ -2,10 +2,11 @@ package com.dlewburg.taskmanagerandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+//import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+//import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -92,18 +93,15 @@ public class AddTaskActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void addingTaskButtonFunction() {
         Button addTaskSubmitButton = findViewById(R.id.addTaskActivityAddTaskButton);
-        addTaskSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View V) {
-                TextView addTaskSubmitted = (TextView) findViewById(R.id.addTaskActivitySubmitTextView);
-                addTaskSubmitted.setText("TASK SUBMITTED!");
+        addTaskSubmitButton.setOnClickListener(V -> {
+            TextView addTaskSubmitted = (TextView) findViewById(R.id.addTaskActivitySubmitTextView);
+            addTaskSubmitted.setText("TASK SUBMITTED!");
 //                Intent goToAllTaskActivity = new Intent(AddTaskActivity.this, AllTasksActivity.class);
 //
 //                startActivity(goToAllTaskActivity);
-
-            }
 
         });
     }

@@ -23,7 +23,7 @@ import java.util.List;
 
 public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder> {
 
-    private List<Task> tasks;
+    private final List<Task> tasks;
     Context callingActivity;
 
     public TaskListRecyclerViewAdapter(List<Task> tasks, Context callingActivity) {

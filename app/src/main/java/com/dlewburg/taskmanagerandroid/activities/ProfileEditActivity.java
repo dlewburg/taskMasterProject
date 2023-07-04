@@ -34,6 +34,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
 
+        //noinspection deprecation
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         showSharedPreferencesData(preferences);
