@@ -43,11 +43,12 @@ public class ProfileEditActivity extends AppCompatActivity {
     }
 
     public void populateTeamSpinner(SharedPreferences preferences) {
+
         String teamString = preferences.getString(TEAM_TAG, "");
         CompletableFuture<List<Team>> teamsFuture = new CompletableFuture<>();
         List<Team> teamList = new ArrayList<>();
         List<String> teamListAsString = new ArrayList<>();
-        taskTeamSpinner = findViewById(R.id.addTaskActivityTeamSpinner);
+        taskTeamSpinner = findViewById(R.id.profileEditActivityTeamSpinner);
         Amplify.API.query(
             ModelQuery.list(Team.class),
             success -> {

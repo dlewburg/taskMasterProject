@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     TaskListRecyclerViewAdapter adapter;
     SharedPreferences preferences;
     List<Task> taskList = new ArrayList<>();
-    TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
+//    TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,32 +61,32 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         taskList.clear();
 
-        Team team1 = Team.builder()
-            .name("First Team")
-            .build();
-        Amplify.API.mutate(
-            ModelMutation.create(team1),
-            success -> Log.i(TAG, "Team Added Successfully"),
-            failure -> Log.i(TAG, "Failed to Add Team")
-        );
-
-        Team team2 = Team.builder()
-            .name("Second Team")
-            .build();
-        Amplify.API.mutate(
-            ModelMutation.create(team2),
-            success -> Log.i(TAG, "Teams Added Successfully"),
-            failure -> Log.i(TAG, "Failed to Add Team")
-        );
-
-        Team team3 = Team.builder()
-            .name("Second Team")
-            .build();
-        Amplify.API.mutate(
-            ModelMutation.create(team3),
-            success -> Log.i(TAG, "Teams Added Successfully"),
-            failure -> Log.i(TAG, "Failed to Add Team")
-        );
+//        Team team1 = Team.builder()
+//            .name("First Team")
+//            .build();
+//        Amplify.API.mutate(
+//            ModelMutation.create(team1),
+//            success -> Log.i(TAG, "Team Added Successfully"),
+//            failure -> Log.i(TAG, "Failed to Add Team")
+//        );
+//
+//        Team team2 = Team.builder()
+//            .name("Second Team")
+//            .build();
+//        Amplify.API.mutate(
+//            ModelMutation.create(team2),
+//            success -> Log.i(TAG, "Teams Added Successfully"),
+//            failure -> Log.i(TAG, "Failed to Add Team")
+//        );
+//
+//        Team team3 = Team.builder()
+//            .name("Third Team")
+//            .build();
+//        Amplify.API.mutate(
+//            ModelMutation.create(team3),
+//            success -> Log.i(TAG, "Teams Added Successfully"),
+//            failure -> Log.i(TAG, "Failed to Add Team")
+//        );
 
         //noinspection deprecation
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         taskList.add(task);
                     }
                 }
-                runOnUiThread(() -> taskListRecyclerViewAdapter.notifyDataSetChanged());
+                runOnUiThread(() -> adapter.notifyDataSetChanged());
             },
             failure -> Log.i(TAG, "Failed to read Tasks from Database")
         );

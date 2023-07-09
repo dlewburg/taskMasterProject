@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProfileEditActivity">
 
+    <Spinner
+        android:id="@+id/profileEditActivityTeamSpinner"
+        android:layout_width="146dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="94dp"
+        app:layout_constraintBottom_toTopOf="@+id/profileEditActivitySaveButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileEditActivityUserEditText" />
+
     <EditText
         android:id="@+id/profileEditActivityUserEditText"
         android:layout_width="wrap_content"
@@ -42,10 +52,10 @@
         android:id="@+id/profileEditActivitySaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="48dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditActivityUserEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/profileEditActivityTeamSpinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>
