@@ -2,6 +2,7 @@ package com.dlewburg.taskmanagerandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import com.dlewburg.taskmanagerandroid.R;
 
 public class SignUpActivity extends AppCompatActivity {
   public static final String TAG = "SignUpActivity";
+  public static final String SIGN_UP_EMAIL_TAG = "Sign_Up_Email_Tag";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,9 @@ public class SignUpActivity extends AppCompatActivity {
             success -> {
               Log.i(TAG, "Successfully Signed Up: " + success.toString());
               // move to the verify account activity and pass email as intent extra(in theory)
+              Intent goToVerificationIntent = new Intent(SignUpActivity.this, VerifyAccountActivity.class);
+              goToVerificationIntent.putExtra(SIGN_UP_EMAIL_TAG, userEmail);
+              startActivity(goToVerificationIntent);
             },
             failure -> {
               Log.i(TAG, "Sign up Failed: " + "ezdaisy2707@yahoo.com " + "with message: " + failure.toString());
