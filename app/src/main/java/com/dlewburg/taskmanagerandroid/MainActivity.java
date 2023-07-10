@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.Team;
@@ -45,6 +47,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // signs username up and sends email when application is run
+        // comment out code when confirmation email is received and user is in cognito on AWS console
+
+//        Amplify.Auth.signUp("ezdaisy2707@yahoo.com", //email address is username
+//            "12qw!@QW",
+//            AuthSignUpOptions.builder()
+//                .userAttribute(AuthUserAttributeKey.email(), "ezdaisy2707@yahoo.com")
+//                .userAttribute(AuthUserAttributeKey.nickname(), "Dasha")
+//                .build(),
+//            success -> {
+//              Log.i(TAG, "Successfully Signed Up: " + success.toString());
+//            },
+//            failure -> {
+//              Log.i(TAG, "Sign up Failed: " + "ezdaisy2707@yahoo.com " + "with message: " + failure.toString());
+//            }
+//        );
+
+        // Run after getting confirmation code from email
+        // Comment out after confirming email-> verify on cognito console
+
+//        Amplify.Auth.confirmSignUp("ezdaisy2707@yahoo.com",
+//            "816492", //verification code from email
+//            success -> {
+//              Log.i(TAG, "Sign Up Verified: " + success.toString());
+//            },
+//            failure -> {
+//              Log.i(TAG, "Sign Up Failed: " + failure.toString());
+//            });
 
 
 
