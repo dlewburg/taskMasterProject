@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
+import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
@@ -76,6 +78,36 @@ public class MainActivity extends AppCompatActivity {
 //            failure -> {
 //              Log.i(TAG, "Sign Up Failed: " + failure.toString());
 //            });
+
+        // Used to sign user in
+        // attach to sign in button for on click
+//        Amplify.Auth.signIn("ezdaisy2707@yahoo.com",
+//            "12qw!@QW",
+//            success -> {
+//              Log.i(TAG, "Sign In Successful: " + success.toString());
+//            },
+//            failure -> {
+//              Log.i(TAG, "Sign in Failed: " + failure.toString());
+//            });
+
+        // Used to log user out
+        // attach to button to make life easier
+        AuthSignOutOptions authSignOutOptions = AuthSignOutOptions.builder()
+            .globalSignOut(true)
+            .build();
+
+        Amplify.Auth.signOut(authSignOutOptions, signOutResult -> {
+            if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
+                // handle successful sign out
+                Log.i(TAG, "Global Sign out Successful");
+            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
+                // handle partial sign out
+                Log.i(TAG, "Partially Signed Out");
+            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
+                // handle failed sign out
+                Log.i(TAG, "Failed to Sign Out: " + signOutResult.toString());
+            }
+        });
 
 
 
