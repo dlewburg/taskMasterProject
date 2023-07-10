@@ -53,19 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // signs username up and sends email when application is run
         // comment out code when confirmation email is received and user is in cognito on AWS console
 
-//        Amplify.Auth.signUp("ezdaisy2707@yahoo.com", //email address is username
-//            "12qw!@QW",
-//            AuthSignUpOptions.builder()
-//                .userAttribute(AuthUserAttributeKey.email(), "ezdaisy2707@yahoo.com")
-//                .userAttribute(AuthUserAttributeKey.nickname(), "Dasha")
-//                .build(),
-//            success -> {
-//              Log.i(TAG, "Successfully Signed Up: " + success.toString());
-//            },
-//            failure -> {
-//              Log.i(TAG, "Sign up Failed: " + "ezdaisy2707@yahoo.com " + "with message: " + failure.toString());
-//            }
-//        );
+
 
         // Run after getting confirmation code from email
         // Comment out after confirming email-> verify on cognito console

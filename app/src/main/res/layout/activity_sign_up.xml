@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/signUpActivityTitleTextView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/signUpActivityySignUpButton"
         android:layout_width="151dp"
         android:layout_height="67dp"
         android:layout_marginTop="80dp"
