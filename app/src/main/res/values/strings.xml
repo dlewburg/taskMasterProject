@@ -30,4 +30,7 @@
     <string name="sign_up_email">email</string>
     <string name="sign_up_password">password</string>
     <string name="sign_up_button">SIGN UP</string>
+    <string name="verify_account_title">Verify Account</string>
+    <string name="verify_account_button">VERIFY</string>
+    <string name="verification_number">Verification Number</string>
 </resources>
