@@ -34,3 +34,7 @@ The process included finishing the first two items in Internal Review which gave
 
 Also did Closed Testing and sent in track for review. This took significantly less time than the Internal Testing.
 
+Added a signup page, login page, and logout button
+
+Added location for each task
+
