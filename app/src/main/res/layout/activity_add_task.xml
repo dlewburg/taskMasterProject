@@ -131,8 +131,10 @@
     <Spinner
         android:id="@+id/addTaskActivityTeamSpinner"
         android:layout_width="146dp"
-        android:layout_height="47dp"
-        tools:layout_editor_absoluteX="226dp"
-        tools:layout_editor_absoluteY="404dp" />
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toEndOf="@+id/addTaskActivityAddTaskButton"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskActivityTaskDescriptionEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

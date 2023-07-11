@@ -29,63 +29,55 @@ import java.util.stream.Collectors;
 public class AddTaskActivity extends AppCompatActivity {
     public static final String TAG = "add_task_tag";
 
+    List<Team> teamList = new ArrayList<>();
+    Team team;
+    String teamString;
+    Spinner taskStatusSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
         CompletableFuture<List<Team>> teamsFuture = new CompletableFuture<>();
-        List<Team> teamList = new ArrayList<>();
+//        List<Team> teamList = new ArrayList<>();
         List<String> teamListAsString = new ArrayList<>();
         Spinner taskTeamSpinner = findViewById(R.id.addTaskActivityTeamSpinner);
         Amplify.API.query(
             ModelQuery.list(Team.class),
             success -> {
                 Log.i(TAG, "Successfully Read Team");
-                for (Team team : success.getData()) {
-                    teamList.add(team);
+                for (Team teams : success.getData()) {
+                    teamList.add(teams);
                 }
                 teamsFuture.complete(teamList);
                 runOnUiThread(() -> {
-                    for (Team team : teamList)
-                        teamListAsString.add(team.getName());
+                    for (Team teams : teamList)
+                        teamListAsString.add(teams.getName());
                     taskTeamSpinner.setAdapter(new ArrayAdapter<>(
                         this,
                         android.R.layout.simple_spinner_item,
                         teamListAsString
                     ));
+                taskTeamSpinner.setSelection(0);
+                teamString = taskTeamSpinner.getSelectedItem().toString();
+//                team = teamList.stream().filter(e -> e.getName().equals(teamString)).collect(Collectors.toList()).get(0);
                 });
             },
-            failure -> Log.i(TAG, "Failed to Read Team")
-        );
 
-        String teamString = taskTeamSpinner.getSelectedItem().toString();
-        Team team = teamList.stream().filter(e -> e.getName().equals(teamString)).collect(Collectors.toList()).get(0);
-
-        taskTeamSpinner.setSelection(0);
+            failure -> {
+                teamsFuture.complete(null);
+                Log.i(TAG, "Failed to Read Team");
+            }
+            );
 
         List<String> statusList = TaskStatusUtility.getTaskStatusList();
 
-        Spinner taskStatusSpinner = findViewById(R.id.addTaskActivitySpinnerTaskStatus);
+        taskStatusSpinner = findViewById(R.id.addTaskActivitySpinnerTaskStatus);
         taskStatusSpinner.setAdapter(new ArrayAdapter<>(
             this,
             android.R.layout.simple_spinner_item,
             statusList
         ));
-
-        TaskStatus newStatus = TaskStatusUtility.taskStatusFromString(taskStatusSpinner.getSelectedItem().toString());
-        Task newTask = Task.builder()
-            .title(getTitle().toString())
-//            .body(get.toString())
-            .status(newStatus)
-            .team(team)
-            .build();
-
-        Amplify.API.mutate(
-            ModelMutation.create(newTask),
-            successResponse -> Log.i(TAG, "AddTaskActivity.onCreate() : added a task"),
-            failureResponse -> Log.i(TAG, "AddTaskActivity.onCreate() : adding task failed" + failureResponse)
-        );
 
 
 
@@ -102,6 +94,22 @@ public class AddTaskActivity extends AppCompatActivity {
 //                Intent goToAllTaskActivity = new Intent(AddTaskActivity.this, AllTasksActivity.class);
 //
 //                startActivity(goToAllTaskActivity);
+            team = teamList.stream().filter(e -> e.getName().equals(teamString)).collect(Collectors.toList()).get(0);
+
+            TaskStatus newStatus = TaskStatusUtility.taskStatusFromString(taskStatusSpinner.getSelectedItem().toString());
+
+            Task newTask = Task.builder()
+                .title(getTitle().toString())
+//            .body(get.toString())
+                .status(newStatus)
+                .team(team)
+                .build();
+
+            Amplify.API.mutate(
+                ModelMutation.create(newTask),
+                successResponse -> Log.i(TAG, "AddTaskActivity.onCreate() : added a task"),
+                failureResponse -> Log.i(TAG, "AddTaskActivity.onCreate() : adding task failed" + failureResponse)
+            );
 
         });
     }
