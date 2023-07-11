@@ -80,22 +80,22 @@ public class MainActivity extends AppCompatActivity {
 
         // Used to log user out
         // attach to button to make life easier
-        AuthSignOutOptions authSignOutOptions = AuthSignOutOptions.builder()
-            .globalSignOut(true)
-            .build();
-
-        Amplify.Auth.signOut(authSignOutOptions, signOutResult -> {
-            if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
-                // handle successful sign out
-                Log.i(TAG, "Global Sign out Successful");
-            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
-                // handle partial sign out
-                Log.i(TAG, "Partially Signed Out");
-            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
-                // handle failed sign out
-                Log.i(TAG, "Failed to Sign Out: " + signOutResult.toString());
-            }
-        });
+//        AuthSignOutOptions authSignOutOptions = AuthSignOutOptions.builder()
+//            .globalSignOut(true)
+//            .build();
+//
+//        Amplify.Auth.signOut(authSignOutOptions, signOutResult -> {
+//            if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
+//                // handle successful sign out
+//                Log.i(TAG, "Global Sign out Successful");
+//            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
+//                // handle partial sign out
+//                Log.i(TAG, "Partially Signed Out");
+//            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
+//                // handle failed sign out
+//                Log.i(TAG, "Failed to Sign Out: " + signOutResult.toString());
+//            }
+//        });
 
 
 

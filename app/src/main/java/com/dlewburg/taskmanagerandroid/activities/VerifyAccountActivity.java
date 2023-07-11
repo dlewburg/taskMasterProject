@@ -18,6 +18,8 @@ public class VerifyAccountActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_verify_account);
+
+    setUpVerificationButton();
   }
 
   public void setUpVerificationButton() {
@@ -34,11 +36,9 @@ public class VerifyAccountActivity extends AppCompatActivity {
             verifyNumber,
             success -> {
               Log.i(TAG, "Sign Up Verified: " + success.toString());
-
               Intent goToLoginActivity = new Intent(VerifyAccountActivity.this, LoginActivity.class);
               goToLoginActivity.putExtra(VERIFICATION_EMAIL_TAG, userEmail);
               startActivity(goToLoginActivity);
-
             },
             failure -> {
               Log.i(TAG, "Sign Up Failed: " + failure.toString());

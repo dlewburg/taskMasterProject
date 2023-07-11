@@ -33,4 +33,7 @@
     <string name="verify_account_title">Verify Account</string>
     <string name="verify_account_button">VERIFY</string>
     <string name="verification_number">Verification Number</string>
+    <string name="login_page">LOGIN PAGE</string>
+    <string name="login_button">LOGIN</string>
+    <string name="logout_button">LOGOUT</string>
 </resources>
