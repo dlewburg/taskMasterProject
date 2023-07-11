@@ -36,4 +36,6 @@
     <string name="login_page">LOGIN PAGE</string>
     <string name="login_button">LOGIN</string>
     <string name="logout_button">LOGOUT</string>
+    <string name="task_location">Task Location</string>
+    <string name="no_location">No Location</string>
 </resources>

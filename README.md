@@ -39,3 +39,7 @@ Also did Closed Testing and sent in track for review. This took significantly le
 Completed adding the recyclerView on the Main Activity but it does not show on the Main page. No errors 
 
 
+Added a signup page, login page, and logout button
+
+Added location for each task
+

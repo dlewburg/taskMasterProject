@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:hint="@string/task_status"
+        android:textColorHint="#A1887F"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,4 +51,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskDetailsActivityMultiLineEditText"
         app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/taskDetailsActivityLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/task_location"
+        android:textColorHint="#A1887F"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/taskDetailsActivityMultiLineEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDetailsActivityTitleTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

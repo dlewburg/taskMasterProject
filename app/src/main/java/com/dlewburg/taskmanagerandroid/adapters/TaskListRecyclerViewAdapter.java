@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.Task;
+import com.dlewburg.taskmanagerandroid.MainActivity;
 import com.dlewburg.taskmanagerandroid.R;
 import com.dlewburg.taskmanagerandroid.activities.TaskDetailsActivity;
 
@@ -40,12 +41,14 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
     @Override
     public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
-        Button taskFragmentButton = (Button) holder.itemView.findViewById(R.id.fragmentTaskListButton);
+        Button taskFragmentButton = holder.itemView.findViewById(R.id.fragmentTaskListButton);
         Task task = tasks.get(position);
-        String taskName = task.getTitle();
-        taskFragmentButton.setText(taskName);
+//        String taskName = tasks.getTitle();
+//        taskFragmentButton.setText(taskName);
 
         setupTaskButton(taskFragmentButton, task);
+//        String taskLatitude = tasks.get(position).getLatitude();
+//        String taskLongitude = tasks.get(position).getLongitude();
     }
 
     @Override
@@ -64,6 +67,9 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
             goToTaskDetailsIntent.putExtra(TASK_DESCRIPTION_TAG, taskDescription);
             String taskStatus = task.getStatus().toString();
             goToTaskDetailsIntent.putExtra(TASK_STATUS_TAG, taskStatus);
+//            goToTaskDetailsIntent.putExtra(MainActivity.TASK_LATITUDE_EXTRA_TAG, taskLatitude);
+//            goToTaskDetailsIntent.putExtra(MainActivity.TASK_LONGITUDE_EXTRA_TAG, taskLongitude);
+
 
             callingActivity.startActivity(goToTaskDetailsIntent);
         });
