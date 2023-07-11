@@ -25,6 +25,7 @@ import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.Team;
 import com.dlewburg.taskmanagerandroid.activities.AddTaskActivity;
 import com.dlewburg.taskmanagerandroid.activities.AllTasksActivity;
+import com.dlewburg.taskmanagerandroid.activities.LoginActivity;
 import com.dlewburg.taskmanagerandroid.activities.ProfileEditActivity;
 //import com.dlewburg.taskmanagerandroid.activities.TaskDetailsActivity;
 import com.dlewburg.taskmanagerandroid.adapters.TaskListRecyclerViewAdapter;
@@ -50,59 +51,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // signs username up and sends email when application is run
-        // comment out code when confirmation email is received and user is in cognito on AWS console
-
-
-
-        // Run after getting confirmation code from email
-        // Comment out after confirming email-> verify on cognito console
-
-//        Amplify.Auth.confirmSignUp("ezdaisy2707@yahoo.com",
-//            "816492", //verification code from email
-//            success -> {
-//              Log.i(TAG, "Sign Up Verified: " + success.toString());
-//            },
-//            failure -> {
-//              Log.i(TAG, "Sign Up Failed: " + failure.toString());
-//            });
-
-        // Used to sign user in
-        // attach to sign in button for on click
-//        Amplify.Auth.signIn("ezdaisy2707@yahoo.com",
-//            "12qw!@QW",
-//            success -> {
-//              Log.i(TAG, "Sign In Successful: " + success.toString());
-//            },
-//            failure -> {
-//              Log.i(TAG, "Sign in Failed: " + failure.toString());
-//            });
-
-        // Used to log user out
-        // attach to button to make life easier
-//        AuthSignOutOptions authSignOutOptions = AuthSignOutOptions.builder()
-//            .globalSignOut(true)
-//            .build();
-//
-//        Amplify.Auth.signOut(authSignOutOptions, signOutResult -> {
-//            if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
-//                // handle successful sign out
-//                Log.i(TAG, "Global Sign out Successful");
-//            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
-//                // handle partial sign out
-//                Log.i(TAG, "Partially Signed Out");
-//            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
-//                // handle failed sign out
-//                Log.i(TAG, "Failed to Sign Out: " + signOutResult.toString());
-//            }
-//        });
-
-
-
         profileEditButtonFunction();
         setUpRecyclerView(taskList);
         addTaskButtonFunction();
         allTaskButtonFunction();
+        setUpLoginButton();
+        setUpLogoutButton();
 
     }
 
@@ -215,6 +169,34 @@ public class MainActivity extends AppCompatActivity {
         taskListRecyclerView.setAdapter(adapter);
     }
 
+    public void setUpLoginButton() {
+        Button loginButton = findViewById(R.id.mainActivityLoginButton);
+        loginButton.setOnClickListener(v -> {
+            Intent goToLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(goToLoginActivity);
+        });
+    }
+
+    public void setUpLogoutButton() {
+        AuthSignOutOptions authSignOutOptions = AuthSignOutOptions.builder()
+            .globalSignOut(true)
+            .build();
+
+        Amplify.Auth.signOut(authSignOutOptions, signOutResult -> {
+            if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
+                // handle successful sign out
+                Log.i(TAG, "Global Sign out Successful");
+            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
+                // handle partial sign out
+                Log.i(TAG, "Partially Signed Out");
+            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
+                // handle failed sign out
+                Log.i(TAG, "Failed to Sign Out: " + signOutResult.toString());
+            }
+        });
+
+    }
+
 
 }
 
@@ -260,3 +242,50 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(goToThirdTaskDetailsActivity);
 //        });
 //    }
+
+// signs username up and sends email when application is run
+// comment out code when confirmation email is received and user is in cognito on AWS console
+
+
+
+// Run after getting confirmation code from email
+// Comment out after confirming email-> verify on cognito console
+
+//        Amplify.Auth.confirmSignUp("ezdaisy2707@yahoo.com",
+//            "816492", //verification code from email
+//            success -> {
+//              Log.i(TAG, "Sign Up Verified: " + success.toString());
+//            },
+//            failure -> {
+//              Log.i(TAG, "Sign Up Failed: " + failure.toString());
+//            });
+
+// Used to sign user in
+// attach to sign in button for on click
+//        Amplify.Auth.signIn("ezdaisy2707@yahoo.com",
+//            "12qw!@QW",
+//            success -> {
+//              Log.i(TAG, "Sign In Successful: " + success.toString());
+//            },
+//            failure -> {
+//              Log.i(TAG, "Sign in Failed: " + failure.toString());
+//            });
+
+// Used to log user out
+// attach to button to make life easier
+//        AuthSignOutOptions authSignOutOptions = AuthSignOutOptions.builder()
+//            .globalSignOut(true)
+//            .build();
+//
+//        Amplify.Auth.signOut(authSignOutOptions, signOutResult -> {
+//            if (signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut) {
+//                // handle successful sign out
+//                Log.i(TAG, "Global Sign out Successful");
+//            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.PartialSignOut) {
+//                // handle partial sign out
+//                Log.i(TAG, "Partially Signed Out");
+//            } else if (signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut) {
+//                // handle failed sign out
+//                Log.i(TAG, "Failed to Sign Out: " + signOutResult.toString());
+//            }
+//        });
