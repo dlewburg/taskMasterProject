@@ -3,7 +3,7 @@ package com.dlewburg.taskmanagerandroid.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+//import android.content.SharedPreferences;
 import android.os.Bundle;
 //import android.preference.PreferenceManager;
 import android.widget.EditText;
@@ -24,6 +24,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task_details);
 
         taskDetailsTaskTitle();
+        setUpLocationDetails();
     }
 
     public void taskDetailsTaskTitle(){
@@ -57,4 +58,21 @@ public class TaskDetailsActivity extends AppCompatActivity {
 
     }
 
+    public void setUpLocationDetails() {
+        Intent callingIntent = getIntent();
+        String taskLatitude = null;
+        String taskLongitude = null;
+
+        if(callingIntent != null){
+            taskLatitude = callingIntent.getStringExtra(MainActivity.TASK_LATITUDE_EXTRA_TAG);
+            taskLongitude = callingIntent.getStringExtra(MainActivity.TASK_LONGITUDE_EXTRA_TAG);
+        }
+
+        TextView taskDetailsInfoTextView = findViewById(R.id.taskDetailsActivityLocationTextView);
+        if(taskLatitude!= null && taskLongitude != null){
+            taskDetailsInfoTextView.setText("Location: " + taskLatitude + ", " + taskLongitude);
+        } else {
+            taskDetailsInfoTextView.setText(R.string.no_location);
+        }
+    }
 }
