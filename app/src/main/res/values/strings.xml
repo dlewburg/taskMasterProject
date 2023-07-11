@@ -38,4 +38,6 @@
     <string name="logout_button">LOGOUT</string>
     <string name="task_location">Task Location</string>
     <string name="no_location">No Location</string>
+    <string name="rewarded_ad">Reward Ad</string>
+    <string name="interstitial_ad">Interstitial Ad</string>
 </resources>
