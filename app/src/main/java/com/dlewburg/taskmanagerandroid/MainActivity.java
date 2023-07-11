@@ -10,12 +10,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     TaskListRecyclerViewAdapter adapter;
     SharedPreferences preferences;
     List<Task> taskList = new ArrayList<>();
-//    TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
+    AuthUser authUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setUpRecyclerView(taskList);
         addTaskButtonFunction();
         allTaskButtonFunction();
+        checkForAuthUser();
         setUpLoginButton();
         setUpLogoutButton();
 
@@ -167,6 +170,36 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new TaskListRecyclerViewAdapter(taskList, this);
         taskListRecyclerView.setAdapter(adapter);
+
+    }
+
+    public void checkForAuthUser() {
+        Amplify.Auth.getCurrentUser(
+            success -> {
+                Log.i(TAG, "User authenticated with username: " + success.getUsername());
+                authUser = success;
+                runOnUiThread(this::renderButtons);
+            },
+            failure -> {
+                Log.i(TAG, "There is no current authenticated user");
+                authUser = null;
+                runOnUiThread(this::renderButtons);
+            }
+        );
+    }
+
+    public void renderButtons() {
+        if (authUser == null) {
+            Button loginButton = findViewById(R.id.mainActivityLoginButton);
+            loginButton.setVisibility(View.VISIBLE);
+            Button logoutButton = findViewById(R.id.mainActivityLogoutButton);
+            logoutButton.setVisibility(View.INVISIBLE);
+        } else {
+            Button loginButton = findViewById(R.id.mainActivityLoginButton);
+            loginButton.setVisibility(View.INVISIBLE);
+            Button logoutButton = findViewById(R.id.mainActivityLogoutButton);
+            logoutButton.setVisibility(View.VISIBLE);
+        }
     }
 
     public void setUpLoginButton() {
