@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.dlewburg.taskmanagerandroid"
-        minSdk 31
+        minSdk 24
         targetSdk 33
         versionCode 2
         versionName "1.1"
@@ -32,6 +32,7 @@ android {
 dependencies {
 
     // Amplify core dependency
+    implementation 'com.google.android.gms:play-services-ads:22.2.0'
     implementation 'com.amplifyframework:core:2.8.7'
     implementation 'com.amplifyframework:aws-api:2.2.2'
     implementation 'com.amplifyframework:aws-datastore:2.2.2'
